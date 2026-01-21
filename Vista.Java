@@ -87,7 +87,8 @@ public class Vista
                 showRadioOn();
                 break;
             case 2:
-                carRadio.switchBand("Bandaxd");
+                String actualBand = carRadio.getBand();
+                carRadio.switchBand(actualBand);
                 showRadioGeneral();
                 break;
             case 3:
@@ -97,13 +98,13 @@ public class Vista
             case 4:
                 System.out.println("Enter station to save:");
                 String station = sc.next();
-                carRadio.saveStation(station);
+                carRadio.saveStation(String.valueOf(station+1));
                 showRadioGeneral();
                 break;
             case 5:
                 System.out.println("Enter button to select:");
                 String selectedStation = sc.nextLine();
-                carRadio.selectStation(selectedStation);
+                carRadio.selectStation(String.valueOf(selectedStation+1));
                 showRadioGeneral();
                 break;
             default:

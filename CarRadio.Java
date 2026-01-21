@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CarRadio implements Radio
+public class CarRadio implements RadioInterface
 {
     private boolean isOn;
     private String band1;

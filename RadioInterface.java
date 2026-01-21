@@ -1,4 +1,4 @@
-public interface Radio
+public interface RadioInterface
 {
     void turnOn();
     void turnOff();
