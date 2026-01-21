@@ -15,6 +15,10 @@ public class CarRadio implements RadioInterface
         this.band1 = "FM";
         this.currentStation = 87.9;
         this.savedStations = new ArrayList<>();
+        for (int i = 0; i < 12; i++)
+        {
+            this.savedStations.add(0.0);
+        }
     }
 
     public void turnOn()
@@ -37,10 +41,12 @@ public class CarRadio implements RadioInterface
         if (band.equals("FM"))
         {
             this.band1 = "AM";
+            this.currentStation = 530;
         }
         else
         {
             this.band1 = "FM";
+            this.currentStation = 87.9;
         }
     }
 
@@ -51,13 +57,23 @@ public class CarRadio implements RadioInterface
 
     public void saveStation(String station)
     {
-        double stationSelected = Double.parseDouble(station); //hacer metodo de validacion
-        this.savedStations.add(stationSelected);
+        double stationSelected = Double.parseDouble(station); 
+        stationSelected = Math.round(stationSelected * 10.0) / 10.0;
+        for (int i = 0; i < 12; i++)
+        {
+            if (this.savedStations.get(i) == 0.0)
+            {
+                this.savedStations.set(i, stationSelected);
+                return;
+            }
+        }
     }
 
     public void selectStation(String station)
     {
-       //arreglar esto
+       int buttonNumber = Integer.parseInt(station);
+       Double savedStation = this.savedStations.get(buttonNumber - 1);
+       this.currentStation = savedStation;
     }
 
     public void nextStation()
