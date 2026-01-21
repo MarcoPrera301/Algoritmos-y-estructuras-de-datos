@@ -84,11 +84,11 @@ public class CarRadio implements Radio
         if (this.band .equals("FM"))
         {
             this.currentStation += 0.2;
-            if (this.currentStation > 107.9
+            if (this.currentStation > 107.9)
                 {
                     this.currentStation = 87.9;
                 }
-            )
+           
         }
         else
         {
