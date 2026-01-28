@@ -105,7 +105,7 @@ public class Vista
             case 5:
                 System.out.println("Enter button to select:");
                 String selectedStation = sc.nextLine();
-                carRadio.selectStation(String.valueOf(selectedStation+1));
+                carRadio.selectStation(String.valueOf(selectedStation));
                 showRadioGeneral();
                 break;
             default:
