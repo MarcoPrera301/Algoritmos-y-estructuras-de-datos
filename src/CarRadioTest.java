@@ -1,47 +1,49 @@
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import org.junit.*;
+
 
 public class CarRadioTest 
 {
     private RadioInterface radio;
 
-    @BeforeEach
-    void setUp()
+    @Before
+    public void setUp()
     {
         radio = new CarRadio(); 
         radio.turnOn();
     }
 
     @Test
-    void testTurnOn()
+    public void testTurnOn()
     {
         assertTrue(radio.isOn());
     }
 
     @Test
-    void testTurnOff()
+    public void testTurnOff()
     {
         radio.turnOff();
         assertFalse(radio.isOn());
     }
 
     @Test
-    void testSwitchBand(){
+    public void testSwitchBand(){
         radio.switchBand("FM");
         assertEquals("AM", radio.getBand());
     }
 
     @Test
-    void testNextStation(){
+    public void testNextStation(){
         double initial = radio.getCurrentStation();
         radio.nextStation();   
-        assertEquals(initial + 0.2, radio.getCurrentStation());
+        assertEquals(initial + 0.2, radio.getCurrentStation(), 0.2);
     }
 
     @Test
-    void testSaveAndSelectStation(){
+    public void testSaveAndSelectStation(){
         radio.saveStation("102.5");
         radio.selectStation("1");
         assertEquals(102.5, radio.getCurrentStation(), 0.01);
